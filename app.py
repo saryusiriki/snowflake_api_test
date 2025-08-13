@@ -9,12 +9,12 @@ def home():
 
 def connect_to_snowflake():
     return snowflake.connector.connect(
-        user='SARYU',
-        password='Saryu@12345678',
-        account='UDQXAND-WHA82584',
-        database='TEST',
-        schema='TEST',
-        warehouse='COMPUTE_WH'
+        user=os.environ["SNOWFLAKE_USER"],
+        password=os.environ["SNOWFLAKE_PASSWORD"],
+        account=os.environ["SNOWFLAKE_ACCOUNT"],
+        warehouse=os.environ["SNOWFLAKE_WAREHOUSE"],
+        database=os.environ["SNOWFLAKE_DATABASE"],
+        schema=os.environ["SNOWFLAKE_SCHEMA"]
     )
 
 @app.route("/query", methods=["POST"])
